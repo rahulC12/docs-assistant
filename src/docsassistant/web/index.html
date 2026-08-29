@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Docs Assistant — ask your documents</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="shell">
+
+  <aside class="rail" aria-label="Sources">
+    <header class="rail__head">
+      <h1 class="wordmark">Docs<span>Assistant</span></h1>
+      <p class="wordmark__sub">Answers with receipts</p>
+    </header>
+
+    <div class="drop" id="drop" tabindex="0" role="button"
+         aria-label="Add documents. Click to choose files, or drop them here.">
+      <svg class="drop__icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5" fill="none"
+              stroke="currentColor" stroke-width="1.6"
+              stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M4 15v3.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V15"
+              fill="none" stroke="currentColor" stroke-width="1.6"
+              stroke-linecap="round"/>
+      </svg>
+      <p class="drop__title">Add documents</p>
+      <p class="drop__hint">PDF, Word, text or markdown</p>
+      <input type="file" id="file-input" multiple hidden accept=".pdf,.docx,.txt,.md">
+    </div>
+
+    <div class="rail__scroll">
+      <div class="rail__label">
+        <span>Library</span>
+        <span class="chip" id="chunk-count" hidden></span>
+      </div>
+      <ul class="docs" id="docs"></ul>
+      <p class="rail__empty" id="rail-empty">Nothing indexed yet.</p>
+    </div>
+
+    <footer class="rail__foot">
+      <span class="dot" id="mode-dot"></span>
+      <span id="mode-text">Connecting…</span>
+    </footer>
+  </aside>
+
+  <main class="stage">
+    <div class="thread" id="thread">
+      <section class="opening" id="opening">
+        <p class="opening__eyebrow">What this does</p>
+        <h2 class="opening__title">
+          Ask a question. Get the answer <em>and</em> the page it came from.
+        </h2>
+        <p class="opening__body">
+          Answers are assembled only from passages found in your own documents,
+          and every one is shown to you — file, page, exact wording. When nothing
+          in your library answers the question, it says so instead of guessing.
+        </p>
+        <ul class="examples" id="examples" hidden></ul>
+      </section>
+    </div>
+
+    <div class="composer">
+      <form class="composer__form" id="form" autocomplete="off">
+        <label class="sr-only" for="q">Your question</label>
+        <textarea id="q" rows="1" placeholder="Ask something about your documents…" maxlength="1000"></textarea>
+        <button type="submit" id="send" aria-label="Ask">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" fill="none"
+                  stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </form>
+      <p class="composer__note" id="composer-note">Add a document before asking.</p>
+    </div>
+  </main>
+
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

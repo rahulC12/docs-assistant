@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.env
+.data/
+.cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
